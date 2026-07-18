@@ -47,7 +47,7 @@ public:
         // @param capacity -> capacity for the HashSet, capacity must be multiple of 2 
         if (capacity == 0)
             throw std::invalid_argument("capacity must be greater than 0");
-        if (capacity & (capacity - 1) != 0)
+        if (capacity & (capacity - 1 != 0))
             throw std::invalid_argument("capacity must be multiple of 2");
 
         data = new Entry<T>[capacity];
