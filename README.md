@@ -39,8 +39,8 @@ All code in this project was written by me.
 Some additional Learning material were used:
 
 - **Youtube: sst-csci.com - Robin Hood Hashing Insertion / Removal in Robin Hood Hashing**
-- https://www.youtube.com/watch?v=ZOsXsgBt86U
-- https://www.youtube.com/watch?v=xGggEG9JTLI
+https://www.youtube.com/watch?v=ZOsXsgBt86U
+https://www.youtube.com/watch?v=xGggEG9JTLI
 These videos were used to better understand the steps involved in modifying the hash set.
 
 - **AI (ChatGPT)**
