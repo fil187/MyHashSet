@@ -38,6 +38,7 @@ struct Entry {
  * @invariant `data != nullptr`
  * @invariant `size` is always less than 85% of capacity.
  * @invariant `size` is always greater than 25% of capacity iff `capacity <= DEFAULT_CAPACITY`.
+ * @invariant Each value is contained in the set at most once.
  * @invariant data points to an allocated array of exactly `capacity` elements `Entry<T>`.
  * @invariant For every occupied entry in data with index `i`,
  *            `(hash(value) & (capacity - 1) + distance) mod capacity == i`
