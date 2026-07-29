@@ -2,6 +2,10 @@
 #include <concepts>
 #include <stdexcept>
 
+/**
+ * @tparam T Must be equality comparable, default constructible, and hashable.
+ *         `std::hash<T>` must return a value convertible to `size_t`.
+ */
 template <typename T>
 concept HashSetKey = 
     std::equality_comparable<T>
@@ -12,9 +16,6 @@ enum State { Occupied, Empty };
 
 /**
  * @brief An entry in a set.
- * 
- * @tparam T The element type stored in the hash set.
- *          Must satisfy the HashSetKey concept.
  */
 template <HashSetKey T>
 struct Entry {
@@ -31,9 +32,6 @@ struct Entry {
 
 /**
  * @brief A mutable robin hood implementation of a hash set.
- * 
- * @tparam T The element type stored in the hash set.
- *         Must satisfy the HashSetKey concept.
  * 
  * @invariant `capacity > 0`
  * @invariant `size <= capacity`
