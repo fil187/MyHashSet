@@ -5,6 +5,12 @@ A Robin Hood hash set implementation in C++.
 
 This project was created as part of a learning exercise to better understand data structures and algorithms, specifically hash sets.
 
+
+## Documentation
+
+API documentation:
+https://fil187.github.io/MyHashSet/
+
 ## Features
 
 - Robin Hood hash set implementation
