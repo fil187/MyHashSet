@@ -36,6 +36,7 @@ struct Entry {
  * @invariant `capacity > 0`
  * @invariant `size <= capacity`
  * @invariant `data != nullptr`
+ * @invariant `capacity` is a power of 2
  * @invariant `size` is always less than 85% of capacity.
  * @invariant `size` is always greater than 25% of capacity iff `capacity <= DEFAULT_CAPACITY`.
  * @invariant Each value is contained in the set at most once.
@@ -121,7 +122,7 @@ public:
      * @return true if the value was successfully inserted in the set, otherwise false.
      * @throw std::bad_alloc if the allocation fails.
      * 
-     * @post The length of this set is increased by 1 iff the function returns true.
+     * @post The size of this set is increased by 1 iff the function returns true.
      * @post The value is present in the set.
      * @post All values initially present in the set are still present.
      */
@@ -198,13 +199,13 @@ public:
      * @throw std::bad_alloc if the allocation fails.
      * @return true if the value was successfully removed, otherwise false.
      * 
-     * @post The length of this set is decreased by 1 iff the function returns true.
+     * @post The size of this set is decreased by 1 iff the function returns true.
      * @post `value` is not in the set.
      * @post All values different from `value` initially present in the set are still present.
      */
     bool remove(const T& value) {
         
-        if (size * 100  < capacity * 25)
+        if (capacity > DEFAULT_CAPACITY && size * 100  < capacity * 25)
             resize(capacity / 2);
 
         size_t hash = std::hash<T>{}(value);
