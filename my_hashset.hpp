@@ -91,7 +91,19 @@ public:
      * @note Copying is disabled because the container owns dynamically 
      *       allocated storage and does not implement deep-copy semantics.
      */
-    MyHashSet& operator=(const MyHashSet&) = delete;
+    MyHashSet<T>& operator=(const MyHashSet<T>&) = delete;
+
+    /**
+     * @note Move construction is disabled because this container's 
+     *       invariants do not permit a moved-from state.
+     */
+    MyHashSet(const MyHashSet&&) = delete;
+
+    /**
+     * @note Move assignment is disabled because this container's 
+     *       invariants do not permit a moved-from state.
+     */
+    MyHashSet<T>& operator=(const MyHashSet<T>&&) = delete;
 
     /**
      * @return The number of elements currently stored in the set.
