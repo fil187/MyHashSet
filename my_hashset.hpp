@@ -97,16 +97,17 @@ public:
      * @note Move construction is disabled because this container's 
      *       invariants do not permit a moved-from state.
      */
-    MyHashSet(const MyHashSet&&) = delete;
+    MyHashSet(MyHashSet&&) = delete;
 
     /**
-     * @note Move assignment is disabled because this container's 
-     *       invariants do not permit a moved-from state.
+     * @note Move operations are intentionally disabled because 
+     *       this container's invariants do not permit a moved-from state.
      */
-    MyHashSet& operator=(const MyHashSet&&) = delete;
+    MyHashSet& operator=(MyHashSet&&) = delete;
 
     /**
-     * @return The number of elements currently stored in the set.
+     * @note Move operations are intentionally disabled because 
+     *       this container's invariants do not permit a moved-from state.
      */
     size_t length() const {
         return size;
