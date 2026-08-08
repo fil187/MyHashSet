@@ -75,8 +75,8 @@ public:
     MyHashSet(size_t capacity): capacity(capacity), size(0) {
         if (capacity == 0)
             throw std::invalid_argument("capacity must be greater than 0");
-        if (capacity & (capacity - 1 != 0))
-            throw std::invalid_argument("capacity must be multiple of 2");
+        if ((capacity & (capacity - 1)) != 0)
+            throw std::invalid_argument("capacity must be a power of 2");
 
         data = new Entry<T>[capacity];
     }
@@ -106,8 +106,7 @@ public:
     MyHashSet& operator=(MyHashSet&&) = delete;
 
     /**
-     * @note Move operations are intentionally disabled because 
-     *       this container's invariants do not permit a moved-from state.
+     * @return The number of stored elements.
      */
     size_t length() const {
         return size;
@@ -139,14 +138,14 @@ public:
 
         while (true) {
             if (data[idx].state == Empty) {
-                data[idx].value = value;
+                data[idx].value = current_value;
                 data[idx].state = Occupied;
                 data[idx].distance = distance;
                 size += 1;
                 return true;
-            } else if (data[idx].state == Occupied && data[idx].value == value) {
+            } else if (data[idx].value == current_value) {
                 return false;
-            } else if (data[idx].state == Occupied && data[idx].distance < distance) {
+            } else if (data[idx].distance < distance) {
                 std::swap(current_value, data[idx].value);
                 std::swap(distance, data[idx].distance);
             } else {
@@ -279,7 +278,7 @@ private:
                     new_data[idx].state = Occupied;
                     new_data[idx].distance = distance;
                     break;
-                } else if (new_data[idx].state == Occupied && new_data[idx].distance < distance) {
+                } else if (new_data[idx].distance < distance) {
                     std::swap(current_value, new_data[idx].value);
                     std::swap(distance, new_data[idx].distance);
                 } else {
