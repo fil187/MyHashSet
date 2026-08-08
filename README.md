@@ -18,7 +18,6 @@ https://fil187.github.io/MyHashSet/
 - Element removal
 - Element lookup
 - Dynamic resizing
-- Invariant preservation
 
 ## Testing
 
